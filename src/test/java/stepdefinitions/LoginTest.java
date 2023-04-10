@@ -7,14 +7,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageobjects.DashboardPage;
+import pageobjects.CommonOptions;
 import pageobjects.LoginPage;
 
 
 public class LoginTest {
 	public WebDriver driver;
 	public static LoginPage loginPage;
-	private DashboardPage dashboardPage;
+	public static CommonOptions commonOptions;
 
 	@Given("^user navigates to login page$")
 	public  LoginPage user_navigates_to_login_page(){
@@ -34,15 +34,15 @@ public class LoginTest {
 	}
 	@And("^click login button$")
 	public void click_login_button()   {
-		dashboardPage = loginPage.clickLogin();
+		commonOptions = loginPage.clickLogin();
 	}
 
 
-	@Then("^it should login and display the dashboard or display appropriate warning (.+)$") 
-	public void it_should_login_and_display_the_dashboard_or_display_appropriate_warning(String username)   {
+	@Then("^it should login as (.+) and display the dashboard or display appropriate warning$") 
+	public void it_should_login_as_something_and_display_the_dashboard_or_display_appropriate_warning(String username)   {
 		switch (username) {
 		case "Admin":
-			Assert.assertEquals(true, dashboardPage.isFocusInDasboard());
+			Assert.assertEquals(true, commonOptions.checkFocus("Dashboard"));
 			break;
 		case "gokulsam07":
 			Assert.assertEquals("Invalid credentials", loginPage.isErrorDisplayedForWrongCreds());

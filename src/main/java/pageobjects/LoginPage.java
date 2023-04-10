@@ -39,9 +39,9 @@ public class LoginPage {
 	public void enterPassword(String pass) {
 		password.sendKeys(pass);
 	}
-	public DashboardPage clickLogin() {
+	public CommonOptions clickLogin() {
 		submit.click();
-		return new DashboardPage(driver);
+		return new CommonOptions(driver);
 	}
 
 	public String isErrorDisplayedForWrongCreds() {

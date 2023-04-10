@@ -8,7 +8,7 @@ Feature: Login feature
     When user enters the username <username>
     And user enters the password <password>
     And click login button
-    Then it should login and display the dashboard or display appropriate warning <username>
+    Then it should login as <username> and display the dashboard or display appropriate warning
 
     Examples: 
       | username   | password  |
