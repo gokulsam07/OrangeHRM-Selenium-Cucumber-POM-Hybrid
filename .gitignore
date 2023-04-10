@@ -2,3 +2,5 @@ reports/
 target/
 report.html
 .settings/
+test-output/
+

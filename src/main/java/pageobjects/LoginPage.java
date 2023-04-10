@@ -21,15 +21,18 @@ public class LoginPage {
 	private WebElement usernameWarning;
 	@FindBy(xpath="//input[@class='oxd-input oxd-input--active oxd-input--error' and @name='password']")
 	private WebElement passwordWarning;
-	
-	
-	
-	
+	@FindBy(css=".oxd-text.oxd-text--p.orangehrm-login-forgot-header")
+	private WebElement forgotPassword;
+
+
+
+
+
 	public LoginPage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public void enterUsername(String email) {
 		username.sendKeys(email);
 	}
@@ -41,8 +44,24 @@ public class LoginPage {
 		return new DashboardPage(driver);
 	}
 
-	public boolean isErrorDisplayedForWrongCreds() {
-		return loginError.isDisplayed();
+	public String isErrorDisplayedForWrongCreds() {
+		return loginError.getText();
 	}
-	
+
+	public boolean IsWarningDisplayed() {
+		if(usernameWarning.isDisplayed()) {
+			return passwordWarning.isDisplayed();
+		}
+		return false;
+	}
+
+	public ResetPasswordPage verifyForgotPassword() {
+		forgotPassword.click();
+		return new ResetPasswordPage(driver);
+	}
+
+	public boolean verifyForgotPasswordIsDsiplayed() {
+		return forgotPassword.isDisplayed();
+	}
+
 }
