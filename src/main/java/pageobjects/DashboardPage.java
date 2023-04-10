@@ -9,6 +9,9 @@ public class DashboardPage {
 	WebDriver driver;
 	@FindBy(xpath="//h6[normalize-space()='Dashboard']")
 	private WebElement dashboardFocus;
+	@FindBy(xpath="//p[normalize-space()='My Actions']")
+	private WebElement myActionsHeading;
+	
 
 
 	public DashboardPage(WebDriver driver) {
@@ -18,5 +21,9 @@ public class DashboardPage {
 
 	public boolean isFocusInDasboard() {
 		return dashboardFocus.isDisplayed();
+	}
+	
+	public boolean isMyActionsVisible() {
+		return myActionsHeading.isDisplayed();
 	}
 }

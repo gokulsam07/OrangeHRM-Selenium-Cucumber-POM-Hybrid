@@ -3,8 +3,8 @@ Feature: Verify the side panel option
 
   Background: Login to app 
     Given user navigates to login page
-    When user enters the username "Admin"
-    And user enters the password "admin123"
+    When user enters the username Admin
+    And user enters the password admin123
     And click login button
     Then it should login as "Admin" and display the dashboard or display appropriate warning
     

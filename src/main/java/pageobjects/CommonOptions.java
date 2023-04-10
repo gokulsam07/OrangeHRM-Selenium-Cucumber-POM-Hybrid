@@ -1,11 +1,15 @@
 package pageobjects;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class CommonOptions {
 	WebDriver driver;
@@ -46,6 +50,19 @@ public class CommonOptions {
 	@FindBy(xpath="//a[@class ='oxd-main-menu-item' and contains(@href, 'index')]//span")
 	private List<WebElement> allListText;
 
+	//ProfileOptions
+	@FindBy(className="oxd-userdropdown-tab")
+	private WebElement profileOptions;
+	@FindBy(linkText="About")
+	private WebElement about;
+	@FindBy(linkText="Support")
+	private WebElement support;
+	@FindBy(linkText="Change Password")
+	private WebElement changePassword;
+	@FindBy(linkText="Logout")
+	private WebElement logout;
+	@FindBy(xpath="//button[normalize-space()='×']")
+	private WebElement closeAbout;
 
 
 
@@ -140,6 +157,53 @@ public class CommonOptions {
 	}
 
 
+	//ProfileOption Actions
+	public boolean profileOptions(String option) {
+		profileOptions.click();
+		switch (option) {
+		case "about": {
+			about.click();
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+			wait.until(ExpectedConditions.visibilityOf(closeAbout));
+			if(closeAbout.isDisplayed()) {
+				return true;
+			}
+			break;
+		}
 
+		case "support": {
+			if(support.isDisplayed()) {
+				support.click();
+				return true;
+			}
+			break;
+		}
 
+		case "Change Password": {
+			changePassword.click();
+			break;
+		}
+
+		case "logout": {
+			logout.click();
+			if(driver.getCurrentUrl().contains("login")) {
+				return true;
+			}
+			break;
+		}
+
+		}
+		return false;	
+	}
+
+	public boolean checkIfAboutCardIsClosed() {
+		return closeAbout.isDisplayed();
+	}
+	public boolean closeAbout() {
+		if(closeAbout.isDisplayed()) {
+			closeAbout.click();
+			return true;
+		}
+		return false;
+	}
 }

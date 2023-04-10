@@ -50,8 +50,36 @@ public class LoginTest {
 		}
 	}
 
+
+
 	@And("^display appropriate warning$")
 	public void display_appropriate_warning()   {
 		Assert.assertEquals(true, loginPage.IsWarningDisplayed());
 	}
+
+
+	@When("click {string} button")
+	public void click_something_button(String option)   {
+		Assert.assertEquals(true, commonOptions.profileOptions(option));
+	}
+
+	@Then("^redirect to login page check$")
+	public void redirect_to_login_page_check()   {
+		Assert.assertEquals(true, driver.getCurrentUrl().contains("login"));
+	}
+
+	@Then("^check if the about card is closed$")
+	public void check_if_the_about_card_is_closed()   {
+		commonOptions.closeAbout();
+		Assert.assertEquals(true, commonOptions.openDashboardModule().isMyActionsVisible());
+	}
+	
+	@Then("^check if redirected to support page$")
+	public void check_if_redirected_to_support_page()   {
+		Assert.assertEquals(true, driver.getCurrentUrl().contains("support"));
+	}
+	
+	
+
+
 }

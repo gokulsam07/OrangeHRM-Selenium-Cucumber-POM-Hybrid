@@ -18,4 +18,4 @@ Feature: Login feature
   Scenario: Login without credentials
     And click login button
     Then display appropriate warning
-    
+
