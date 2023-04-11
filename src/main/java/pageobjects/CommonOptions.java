@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageobjects.adminModule.AdminPage;
+
 
 public class CommonOptions {
 	WebDriver driver;
@@ -96,8 +98,9 @@ public class CommonOptions {
 
 
 
-	public void openAdminModule() {
+	public AdminPage openAdminModule() {
 		admin.click();
+		return new AdminPage(driver);
 	}
 	public void openLeaveModule() {
 		leave.click();
