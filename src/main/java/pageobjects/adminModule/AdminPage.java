@@ -24,6 +24,10 @@ public class AdminPage implements IAdmin{
 	private WebElement job;
 	@FindBy(xpath="//span[normalize-space()='Organization']") 
 	private WebElement organization;
+	@FindBy(xpath="//a[normalize-space()='Nationalities']") 
+	private WebElement nationality;
+	
+	
 	@FindBy(css="div[class='oxd-input-group oxd-input-field-bottom-space'] div input[class='oxd-input oxd-input--active']") 
 	private WebElement usernameField;
 	@FindBy(css="button[type='submit']") 
@@ -34,6 +38,7 @@ public class AdminPage implements IAdmin{
 	private WebElement reset;
 	@FindBy(css="div[class='orangehrm-horizontal-padding orangehrm-vertical-padding'] span[class='oxd-text oxd-text--span']") 
 	private WebElement recordCount;
+	
 
 
 
@@ -47,7 +52,7 @@ public class AdminPage implements IAdmin{
 
 	@Override
 	public boolean checkFocus() {
-		return moduleName.isDisplayed();
+		return moduleName.getText().contains("Admin");
 	}
 
 
@@ -62,6 +67,10 @@ public class AdminPage implements IAdmin{
 		case "organization": {
 			job.click();
 			return new Admin_OrganizationPage(driver);
+		}
+		case "nationalities": {
+			nationality.click();
+			return new Admin_NationalitiesPage(driver);
 		}
 		}
 		return null;

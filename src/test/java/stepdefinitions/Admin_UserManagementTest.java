@@ -14,11 +14,12 @@ public class Admin_UserManagementTest {
 	public WebDriver driver;
 	LoginPage loginPage =LoginTest.loginPage;
 	CommonOptions commonOptions=LoginTest.commonOptions;
-	AdminPage adminPage;
+	public static AdminPage adminPage;
 	
 	@When("^user selects Admin module$")
-	public void user_selects_Admin_module(){
+	public AdminPage user_selects_Admin_module(){
 		adminPage = commonOptions.openAdminModule();
+		return adminPage;
 	}
 
 	@Then("^focus should be in Admin module$")
