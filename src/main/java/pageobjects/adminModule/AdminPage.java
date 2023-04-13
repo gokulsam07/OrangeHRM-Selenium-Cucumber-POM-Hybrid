@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+
 public class AdminPage implements IAdmin{
 
 	WebDriver driver;
@@ -26,8 +27,10 @@ public class AdminPage implements IAdmin{
 	private WebElement organization;
 	@FindBy(xpath="//a[normalize-space()='Nationalities']") 
 	private WebElement nationality;
-	
-	
+	@FindBy(linkText="Corporate Branding") 
+	private WebElement corporateBranding;
+
+
 	@FindBy(css="div[class='oxd-input-group oxd-input-field-bottom-space'] div input[class='oxd-input oxd-input--active']") 
 	private WebElement usernameField;
 	@FindBy(css="button[type='submit']") 
@@ -38,7 +41,7 @@ public class AdminPage implements IAdmin{
 	private WebElement reset;
 	@FindBy(css="div[class='orangehrm-horizontal-padding orangehrm-vertical-padding'] span[class='oxd-text oxd-text--span']") 
 	private WebElement recordCount;
-	
+
 
 
 
@@ -60,10 +63,6 @@ public class AdminPage implements IAdmin{
 
 	public IAdmin selectOptions(String option) {
 		switch (option) {
-		case "job": {
-			job.click();
-			return new Admin_JobPage(driver);
-		}
 		case "organization": {
 			job.click();
 			return new Admin_OrganizationPage(driver);
@@ -71,6 +70,11 @@ public class AdminPage implements IAdmin{
 		case "nationalities": {
 			nationality.click();
 			return new Admin_NationalitiesPage(driver);
+		}
+
+		case "corporate branding": {
+			corporateBranding.click();
+			return new Admin_CorporateBrandingPage(driver);
 		}
 		}
 		return null;
@@ -90,10 +94,10 @@ public class AdminPage implements IAdmin{
 
 		String str = recordCount.getText();
 		String count = Integer.toString(searchEmp.size());
-		
-				if(str.substring(str.indexOf("(") + 1, str.indexOf(")")).trim().equals(count)) {
-					return true;
-				}
+
+		if(str.substring(str.indexOf("(") + 1, str.indexOf(")")).trim().equals(count)) {
+			return true;
+		}
 		return false;
 	}
 }
