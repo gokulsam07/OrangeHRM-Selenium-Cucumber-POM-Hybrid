@@ -66,7 +66,7 @@ public class Admin_CorporateBrandingPage implements IAdmin{
 	public boolean verifyDefaultColor() {
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOf(primaryColorPreview));
-		System.out.println(headerColor.getCssValue("background-image"));
+	
 		if(headerColor.getCssValue("background-image").contains("linear-gradient(90deg, rgb(255, 146, 11), rgb(243, 92, 23) 90%)")) {
 			return true;
 		}
