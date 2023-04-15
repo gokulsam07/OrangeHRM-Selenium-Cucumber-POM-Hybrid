@@ -19,7 +19,7 @@ public class PersonalDetailsPage implements IMyInfo{
 	private WebElement personalDetails;
 	@FindBy(xpath="(//h6)[2]")
 	private WebElement name;
-
+	
 
 	//fields
 	@FindBy(name="firstName")
@@ -63,7 +63,6 @@ public class PersonalDetailsPage implements IMyInfo{
 
 		firstName.click();
 		firstName.sendKeys(Keys.chord(Keys.CONTROL,"a"),Keys.chord(Keys.CONTROL,"x"));
-		System.out.println(firstName.getCssValue("border"));
 		if(firstName.getCssValue("border").contains("1px solid rgb(235, 9, 16)")) {
 			firstName.sendKeys("Paule");
 		}
@@ -111,7 +110,7 @@ public class PersonalDetailsPage implements IMyInfo{
 
 
 	public boolean verifyPersonalDetails() {
-		if(name.getText().contentEquals("Paule Collingse")) {
+		if(name.getText().contains("Paule Collingse")) {
 			return true;
 		}
 		return false;

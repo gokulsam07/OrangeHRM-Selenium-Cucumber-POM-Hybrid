@@ -42,6 +42,10 @@ public class myInfoCommons implements IMyInfo {
 			personalDetails.click();
 			return new PersonalDetailsPage(driver);
 		}
+		case "Contact details": {
+			contactDetails.click();
+			return new ContactDetailsPage(driver);
+		}
 		
 		}
 		return null;

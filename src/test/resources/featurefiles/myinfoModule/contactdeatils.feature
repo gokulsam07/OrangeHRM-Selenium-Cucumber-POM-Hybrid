@@ -1,5 +1,5 @@
-Feature: Personal details - my Info Module
-  Verify the fields in personal details
+Feature: Contact details - my Info Module
+  update the fields in contact details
 
   Background: Login to app
     Given user navigates to login page
@@ -10,7 +10,6 @@ Feature: Personal details - my Info Module
     When user selects myInfo module
     Then focus should be in myInfo module
 
-  Scenario: Check details in personal details page
-    When user is in Personal details page
-    Then edit the details and save
-    And verify the modified details
+  Scenario: Check details in contact details page
+    When user is in Contact details page
+    Then fill the details save and verify
