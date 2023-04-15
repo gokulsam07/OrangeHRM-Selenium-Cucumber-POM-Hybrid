@@ -50,6 +50,10 @@ public class myInfoCommons implements IMyInfo {
 			emergencyContacts.click();
 			return new EmergencyContactsPage(driver);
 		}
+		case "Jobs": {
+			job.click();
+			return new JobsPage(driver);
+		}
 		}
 		return null;
 	}

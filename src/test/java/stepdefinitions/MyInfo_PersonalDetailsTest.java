@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import pageobjects.CommonOptions;
 import pageobjects.myInfoModule.ContactDetailsPage;
 import pageobjects.myInfoModule.EmergencyContactsPage;
+import pageobjects.myInfoModule.JobsPage;
 import pageobjects.myInfoModule.PersonalDetailsPage;
 import pageobjects.myInfoModule.myInfoCommons;
 
@@ -21,6 +22,7 @@ public class MyInfo_PersonalDetailsTest {
 	PersonalDetailsPage personalDetailsPage ;
 	public static ContactDetailsPage contactDetailsPage;
 	public static EmergencyContactsPage emergencyContactsPage;
+	public static JobsPage jobsPage;
 	SoftAssert assertSoft =new SoftAssert();
 
 
@@ -52,6 +54,12 @@ public class MyInfo_PersonalDetailsTest {
 		case "Emergency contacts": {
 			emergencyContactsPage = (EmergencyContactsPage) myInfo.selectPage(option);
 			assertSoft.assertEquals(true, emergencyContactsPage.checkFocus());
+			break;
+		}
+		
+		case "Jobs": {
+			jobsPage = (JobsPage) myInfo.selectPage(option);
+			assertSoft.assertEquals(true, jobsPage.checkFocus());
 			break;
 		}
 
