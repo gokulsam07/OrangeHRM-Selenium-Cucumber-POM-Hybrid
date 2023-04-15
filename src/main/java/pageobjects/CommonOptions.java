@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageobjects.adminModule.AdminPage;
+import pageobjects.myInfoModule.myInfoCommons;
 
 
 public class CommonOptions {
@@ -102,12 +103,12 @@ public class CommonOptions {
 		admin.click();
 		return new AdminPage(driver);
 	}
-	public void openLeaveModule() {
-		leave.click();
-	}
-	public void openMyInfoModule() {
+
+	public myInfoCommons openMyInfoModule() {
 		myDetails.click();
+		return new myInfoCommons(driver);
 	}
+	
 	public DashboardPage openDashboardModule() {
 		dashboard.click();
 		return new DashboardPage(driver);
