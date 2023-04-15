@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class myInfoCommons implements IMyInfo {
 	WebDriver driver;
-	
+
 
 	@FindBy(xpath="//h6[normalize-space()='PIM']")
 	private WebElement moduleName;
@@ -46,7 +46,10 @@ public class myInfoCommons implements IMyInfo {
 			contactDetails.click();
 			return new ContactDetailsPage(driver);
 		}
-		
+		case "Emergency contacts": {
+			emergencyContacts.click();
+			return new EmergencyContactsPage(driver);
+		}
 		}
 		return null;
 	}
