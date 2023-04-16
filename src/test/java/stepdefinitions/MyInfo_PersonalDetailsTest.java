@@ -12,6 +12,7 @@ import pageobjects.myInfoModule.ContactDetailsPage;
 import pageobjects.myInfoModule.EmergencyContactsPage;
 import pageobjects.myInfoModule.JobsPage;
 import pageobjects.myInfoModule.PersonalDetailsPage;
+import pageobjects.myInfoModule.ProfilePicturePage;
 import pageobjects.myInfoModule.myInfoCommons;
 
 
@@ -23,6 +24,7 @@ public class MyInfo_PersonalDetailsTest {
 	public static ContactDetailsPage contactDetailsPage;
 	public static EmergencyContactsPage emergencyContactsPage;
 	public static JobsPage jobsPage;
+	public static ProfilePicturePage profilePicturePage;
 	SoftAssert assertSoft =new SoftAssert();
 
 
@@ -60,6 +62,12 @@ public class MyInfo_PersonalDetailsTest {
 		case "Jobs": {
 			jobsPage = (JobsPage) myInfo.selectPage(option);
 			assertSoft.assertEquals(true, jobsPage.checkFocus());
+			break;
+		}
+		
+		case "profile picture": {
+			profilePicturePage = (ProfilePicturePage) myInfo.selectPage(option);
+			assertSoft.assertEquals(true, profilePicturePage.checkFocus());
 			break;
 		}
 

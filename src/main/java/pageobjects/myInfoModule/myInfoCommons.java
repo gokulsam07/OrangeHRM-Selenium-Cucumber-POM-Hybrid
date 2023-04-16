@@ -24,6 +24,9 @@ public class myInfoCommons implements IMyInfo {
 	private WebElement dependents;
 	@FindBy(linkText="Job")
 	private WebElement job;
+	@FindBy(xpath="//div[@class='orangehrm-edit-employee-image']//img[@alt='profile picture']")
+	private WebElement pp;
+	
 
 	public myInfoCommons(WebDriver driver) {
 		this.driver=driver;
@@ -53,6 +56,11 @@ public class myInfoCommons implements IMyInfo {
 		case "Jobs": {
 			job.click();
 			return new JobsPage(driver);
+		}
+		
+		case "profile picture": {
+			pp.click();
+			return new ProfilePicturePage(driver);
 		}
 		}
 		return null;
