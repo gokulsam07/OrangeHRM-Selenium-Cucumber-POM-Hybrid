@@ -63,19 +63,19 @@ public class PersonalDetailsPage implements IMyInfo{
 
 		firstName.click();
 		firstName.sendKeys(Keys.chord(Keys.CONTROL,"a"),Keys.chord(Keys.CONTROL,"x"));
-		if(firstName.getCssValue("border").contains("1px solid rgb(235, 9, 16)")) {
+		if(firstName.getCssValue("border").contains("solid rgb(235, 9, 16)")) {
 			firstName.sendKeys("Paule");
 		}
 
 		lastName.click();
 		lastName.sendKeys(Keys.chord(Keys.CONTROL,"a"),Keys.chord(Keys.CONTROL,"x"));
-		if(lastName.getCssValue("border").contains("1px solid rgb(235, 9, 16)")) {
-			lastName.sendKeys("Collingse");
+		if(lastName.getCssValue("border").contains("solid rgb(235, 9, 16)")) {
+			lastName.sendKeys("Collingsed");
 		}
 
 		dob.click();
 		dob.sendKeys("a",Keys.ENTER);
-		if(dob.getCssValue("border").contains("1px solid rgb(235, 9, 16)")) {
+		if(dob.getCssValue("border").contains("solid rgb(235, 9, 16)")) {
 			dob.sendKeys(Keys.chord(Keys.CONTROL,"a"),Keys.chord(Keys.CONTROL,"x"));
 			dob.sendKeys("1978-10-15");
 		}
@@ -110,7 +110,10 @@ public class PersonalDetailsPage implements IMyInfo{
 
 
 	public boolean verifyPersonalDetails() {
-		if(name.getText().contains("Paule Collingse")) {
+		driver.navigate().refresh();
+		WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.textToBePresentInElement(name, "Paule Collingsed"));
+		if(name.getText().contains("Paule Collingsed")) {
 			return true;
 		}
 		return false;

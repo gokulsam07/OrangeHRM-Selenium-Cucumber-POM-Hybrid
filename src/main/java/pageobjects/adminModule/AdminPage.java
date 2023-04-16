@@ -83,7 +83,7 @@ public class AdminPage implements IAdmin{
 	public boolean enterUsername_Search_Verify(String username) {
 		usernameField.sendKeys(username);
 		search.click();
-		if(searchEmp.size()==1) {
+		if(searchEmp.size()>0) {
 			return searchEmp.get(0).getText().contains(username);
 		}
 		return false;

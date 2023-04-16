@@ -66,9 +66,11 @@ public class EmergencyContactsPage implements IMyInfo{
 				Keys.chord(Keys.CONTROL,"a"), Keys.chord(Keys.CONTROL,"x"),
 				Keys.TAB, "9",
 				Keys.chord(Keys.CONTROL,"a"), Keys.chord(Keys.CONTROL,"x"));
-		if(name.getCssValue("border").contains("1px solid rgb(235, 9, 16)")
-				&&relationship.getCssValue("border").contains("1px solid rgb(235, 9, 16)")
-				&&num1.getCssValue("border").contains("1px solid rgb(235, 9, 16)")) {
+
+		
+		if(name.getCssValue("border").contains("solid rgb(235, 9, 16)")
+				&&relationship.getCssValue("border").contains("solid rgb(235, 9, 16)")
+				&&num1.getCssValue("border").contains("solid rgb(235, 9, 16)")) {
 			name.sendKeys("Frank",Keys.TAB, "Father",Keys.TAB, "98765432");
 			save.click();
 		}
